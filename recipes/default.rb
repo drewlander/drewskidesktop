@@ -29,13 +29,24 @@ end
   cyg-get
   notepadplusplus.install
   7zip.install
-  nodejs.install 
   yarn
+  virtualbox
+  virtualbox.extensionpack 
+  packer
+  sysinternals
+  mpv
+  windirstat
+  nunit.install 
 }.each do |pkg|
   chocolatey_package pkg do
       action :upgrade
     end
 end 
+
+chocolatey_package 'vagrant' do
+  action :upgrade
+  returns [0, 3010]
+end
 
 remote_file "#{node['user']['homefolder']}/chromium_portable.zip" do
   source node['chromium']['portable_url']
