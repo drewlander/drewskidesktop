@@ -37,6 +37,7 @@ end
   mpv
   windirstat
   nunit.install 
+  autohotkey
 }.each do |pkg|
   chocolatey_package pkg do
       action :upgrade
