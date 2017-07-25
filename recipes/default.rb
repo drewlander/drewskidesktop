@@ -55,11 +55,32 @@ remote_file "#{node['user']['homefolder']}/chromium_portable.zip" do
   action :create_if_missing
 end
 
+remote_file "#{node['user']['homefolder']}/chromium_portable.zip" do
+  source node['chromium']['portable_url']
+  owner node['user']['username']
+  action :create_if_missing
+end
+
 powershell_script 'unzip chromium' do
 code <<-EOH
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 [System.IO.Compression.ZipFile]::ExtractToDirectory("#{node['user']['homefolder']}/chromium_portable.zip", "#{node['user']['homefolder']}/chromium_portable")
 EOH
   only_if {! ::File.exist?("#{node['user']['homefolder']}/chromium_portable") }
+end
+
+
+remote_file "#{node['xmplay']['install_location']}/xmplay38.zip" do
+  source node['xmplay']['download_url']
+  owner node['user']['username']
+  action :create_if_missing
+end
+
+powershell_script 'unzip xmplay' do
+code <<-EOH
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+[System.IO.Compression.ZipFile]::ExtractToDirectory("#{node['xmplay']['install_location']}/xmplay38.zip", "#{node['xmplay']['install_location']}/xmplay")
+EOH
+  only_if {! ::File.exist?("#{node['xmplay']['install_location']}/xmplay") }
 end
 

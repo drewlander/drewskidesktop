@@ -1,3 +1,5 @@
 default['chromium']['portable_url'] = 'https://chromium.woolyss.com/f/chrlauncher-win64-stable-codecs-sync.zip'
-default['user']['homefolder'] = 'c:\users\myuser'
+default['user']['homefolder'] = 'c:\users\myusername'
 default['user']['username'] = 'myusername'
+default['xmplay']['download_url'] = 'http://us.un4seen.com/files/xmplay38.zip'
+default['xmplay']['install_location'] = 'c:\users\myusername'
