@@ -36,7 +36,8 @@ end
   sysinternals
   mpv
   windirstat
-  nunit.install 
+  nunit.install
+  nunit-gui
   autohotkey
 }.each do |pkg|
   chocolatey_package pkg do
